@@ -8,7 +8,6 @@ test.describe('Product page tests', () => {
   test.beforeEach(async ({page}) => {
     global.PAGE = page;
     await loginHelper.performLogin();
-
   })
 
   test('User should be able to add product to cart', async ({page}) => {
