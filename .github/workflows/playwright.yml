@@ -19,6 +19,9 @@ jobs:
         run: npx playwright install --with-deps
       - name: Install Playwright test package
         run: npm install -D @playwright/test
+      - name: Create env file
+          run: |
+            echo "${{ secrets.ENV_FILE }}" > .env
       - name: Run Playwright tests
         run: npm run tests
       - uses: actions/upload-artifact@v3
