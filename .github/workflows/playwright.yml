@@ -20,7 +20,7 @@ jobs:
       - name: Install Playwright test package
         run: npm install -D @playwright/test
       - name: Create env file
-          run: |
+        run: |
             echo "${{ secrets.ENV_FILE }}" > .env
       - name: Run Playwright tests
         run: npm run tests
