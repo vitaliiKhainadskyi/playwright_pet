@@ -34,5 +34,4 @@ export class ProductPage {
     await expect(cartPage.title).toBeVisible()
     return cartPage;
   }
-
 }

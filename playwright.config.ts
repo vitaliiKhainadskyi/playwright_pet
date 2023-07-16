@@ -16,7 +16,7 @@ export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/user.json');
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -43,6 +43,21 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: 'API Tests',
+      testMatch: '**/tests/apiTests/*',
+      use: {
+        baseURL: 'http://localhost:5002',
+        extraHTTPHeaders: {
+          // We set this header per GitHub guidelines.
+          //  'Accept': 'application/vnd.github.v3+json',
+          // Add authorization token to all requests.
+          // Assuming personal access token available in the environment.
+          // 'Authorization': `token ${process.env.API_TOKEN}`,
+        }
+      },
+      retries: 0
+    },
     // {
     //   name: 'setup',
     //   testMatch: '**/*.setup.ts',
